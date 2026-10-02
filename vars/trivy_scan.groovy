@@ -1,7 +1,13 @@
 def call() {
+
     sh '''
-        trivy fs --format template \
-        --template "@contrib/html.tpl" \
-        -o trivy-fs-report.html .
+        echo "Starting Trivy filesystem scan..."
+
+        trivy fs \
+        --format json \
+        -o trivy-fs-report.json \
+        .
+
+        echo "Trivy scan completed successfully."
     '''
 }
